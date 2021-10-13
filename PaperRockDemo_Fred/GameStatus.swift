@@ -5,12 +5,13 @@
 //  Created by fred fu on 2021/10/10.
 //
 
+//定義要傳到下一個頁面的資料 贏幾次 輸幾次
 struct GameCount {
     var gameWinCount: Int
     var gameLostCount: Int
-    var gameState: Any
 }
 
+//定義遊戲狀態 並回傳對應的文字
 enum GameStatus {
     case start
     case win
@@ -31,6 +32,7 @@ enum GameStatus {
     }
 }
 
+//資料擺放用 畫面所用的圖案以及文字
 enum SystemMsg: String {
     case bot = "🌚"
     case rock = "✊🏼"

@@ -7,11 +7,12 @@
 
 import UIKit
 
+
 class PlayViewController: UIViewController {
     
+    //遊戲輸贏計數器
     var gameWinCount: Int = 0
     var gameLostCount: Int = 0
-    var gameState: GameStatus = .start
     
     @IBOutlet weak var botDisplaylabel: UILabel!
     @IBOutlet weak var gameStatusLabel: UILabel!
@@ -22,10 +23,18 @@ class PlayViewController: UIViewController {
     @IBOutlet weak var userSingScissorsButton: UIButton!
     @IBOutlet weak var replayButtonOutlet: UIButton!
     
-    
+    //接收從按鈕來的玩家出拳 並電腦會隨機產生一個拳法 並判斷輸贏
+    //內容包含:
+    //1.電腦隨機產生拳法
+    //2.顯示遊戲狀態
+    //3.產生電腦頭像
+    //4.判斷輸贏 並回傳 遊戲狀態 .win .lost .draw
+    //5.計算贏的次數 並將次數更新於showGameCountLabel
     func playGame(userSing: Sing) {
+        
         let botSing = randomSing()
         let gameStatus = userSing.gameState(userSing: botSing)
+        
         gameStatusLabel.text = gameStatus.state
         botDisplaylabel.text = botSing.botSing
         
@@ -44,6 +53,7 @@ class PlayViewController: UIViewController {
         
     }
     
+    //更新Mail畫面
     func uppdateUI() {
         botDisplaylabel.text = SystemMsg.bot.rawValue
         gameStatusLabel.text = GameStatus.start.state.description
@@ -58,6 +68,7 @@ class PlayViewController: UIViewController {
         
     }
     
+    //判斷如果遊戲結束則穎隱藏所有按鈕 並觸發將頁面轉至下一頁
     func showGameList() {
         if gameWinCount == 2 || gameLostCount == 2 {
             
@@ -73,6 +84,7 @@ class PlayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //遊戲開始先更新畫面
         uppdateUI()
         
     }
@@ -102,19 +114,26 @@ class PlayViewController: UIViewController {
         showGameList()
     }
     
+    //將GameCount資料傳至下一頁
     @IBSegueAction func dataTansferFunction(_ coder: NSCoder) -> GameListViewController? {
         let controller = GameListViewController(coder: coder)
-        controller?.gameCount = GameCount(gameWinCount: gameWinCount, gameLostCount: gameWinCount, gameState: GameStatus.start.state.description)
+        controller?.gameCount = GameCount(gameWinCount: gameWinCount, gameLostCount: gameLostCount)
         
         return controller
         
     }
     
+    //重玩按鈕
     @IBAction func replayButtonAction(_ sender: Any) {
+        
+        //清除勝負計數器
         gameWinCount = 0
         gameLostCount = 0
+        
+        //更新畫面
         uppdateUI()
         
+        //顯示猜拳 剪刀 石頭 布 的按鈕
         userSingRockButton.isHidden = false
         userSingPaperButton.isHidden = false
         userSingScissorsButton.isHidden = false

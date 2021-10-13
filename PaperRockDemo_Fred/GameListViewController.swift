@@ -9,29 +9,33 @@ import UIKit
 
 class GameListViewController: UIViewController {
     
+    //接前一頁傳來的資料 型別為GameCount
     var gameCount: GameCount!
     
+    
+    //判斷傳過來的值gameWinCount & gameLostCount 是否等於2 如果等於2 代表三戰兩勝的結果出來了 則顯示相對應得文字
     func checkGameState() {
+        
         if gameCount.gameWinCount == 2 {
-            showGameStateLabel.text = "恭喜你贏了"
-        } else {
-            showGameStateLabel.text = "你輸了，要再來一次嗎？"
+            showGameStateLabel.text = GameStatus.win.state.description
+        } else if gameCount.gameLostCount == 2 {
+            showGameStateLabel.text = GameStatus.lost.state.description
         }
     }
     
-    
     @IBOutlet weak var showGameStateLabel: UILabel!
-    @IBOutlet weak var showGameCountLabel: UILabel!
     @IBOutlet weak var replayButtonOutlet: UIButton!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        replayButtonOutlet.setTitle(SystemMsg.replay.rawValue, for: .normal)
         checkGameState()
         
-        
+        //設定按鈕文字
+        replayButtonOutlet.setTitle(SystemMsg.replay.rawValue, for: .normal)
+        //隱藏按鈕
+        replayButtonOutlet.isHidden = true
     }
     
 
@@ -45,6 +49,7 @@ class GameListViewController: UIViewController {
     }
     */
     
+    //GameListViewController的按鈕 功能未實做
     @IBAction func replayButtonAction(_ sender: Any) {
         
     }
