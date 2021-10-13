@@ -6,7 +6,7 @@
 //
 
 
-//設定三種拳法
+//設定三種拳法 (Enum + Computed Property)
 enum Sing: CaseIterable {
     case rock
     case paper
