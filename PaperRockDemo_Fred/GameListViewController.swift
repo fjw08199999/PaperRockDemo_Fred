@@ -14,14 +14,25 @@ class GameListViewController: UIViewController {
     
     
     //判斷傳過來的值gameWinCount & gameLostCount 是否等於2 如果等於2 代表三戰兩勝的結果出來了 則顯示相對應得文字
+//    func checkGameState() {
+//
+//        if gameCount.gameWinCount == 2 {
+//            showGameStateLabel.text = GameStatus.win.state.description
+//        } else if gameCount.gameLostCount == 2 {
+//            showGameStateLabel.text = GameStatus.lost.state.description
+//        }
+//    }
+    
     func checkGameState() {
-        
-        if gameCount.gameWinCount == 2 {
+            
+            guard gameCount.gameWinCount == 2 else {
+
+              guard gameCount.gameLostCount == 2 else { return }
+                showGameStateLabel.text = GameStatus.lost.state.description
+                return
+            }
             showGameStateLabel.text = GameStatus.win.state.description
-        } else if gameCount.gameLostCount == 2 {
-            showGameStateLabel.text = GameStatus.lost.state.description
         }
-    }
     
     @IBOutlet weak var showGameStateLabel: UILabel!
     @IBOutlet weak var replayButtonOutlet: UIButton!
