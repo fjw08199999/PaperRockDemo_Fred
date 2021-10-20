@@ -105,9 +105,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WK4-k4-9CO">
-                                <rect key="frame" x="109" y="542" width="197" height="149"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WK4-k4-9CO">
+                                <rect key="frame" x="100" y="619" width="214" height="72"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
@@ -125,6 +124,12 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Nvb-q3-3AP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="WK4-k4-9CO" firstAttribute="leading" secondItem="Nvb-q3-3AP" secondAttribute="leading" constant="100" id="7GJ-IT-nMP"/>
+                            <constraint firstItem="Nvb-q3-3AP" firstAttribute="trailing" secondItem="WK4-k4-9CO" secondAttribute="trailing" constant="100" id="BsL-ps-qHs"/>
+                            <constraint firstItem="Nvb-q3-3AP" firstAttribute="bottom" secondItem="WK4-k4-9CO" secondAttribute="bottom" constant="100" id="RS4-by-XAb"/>
+                            <constraint firstItem="Nvb-q3-3AP" firstAttribute="bottom" secondItem="WK4-k4-9CO" secondAttribute="bottom" constant="117" id="sLu-NA-sjg"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="replayButtonOutlet" destination="WK4-k4-9CO" id="dzK-NS-iqD"/>

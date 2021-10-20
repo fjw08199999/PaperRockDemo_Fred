@@ -13,7 +13,9 @@ enum Sing: CaseIterable {
     case scissors
     
     var botSing: String {
+        
         switch self {
+            
         case .rock:
             return "✊🏼"
         case .paper:
@@ -42,8 +44,11 @@ enum Sing: CaseIterable {
 
 //產生隨機拳法
 func randomSing() -> Sing {
+    
     var robotSing = Sing.allCases
+    
     robotSing = robotSing.shuffled()
+    
     return robotSing[0]
 }
 
