@@ -53,7 +53,7 @@ class PlayViewController: UIViewController {
         
     }
     
-    //更新Mail畫面
+    //更新畫面
     func uppdateUI() {
         botDisplaylabel.text = SystemMsg.bot.rawValue
         gameStatusLabel.text = GameStatus.start.state.description
@@ -81,11 +81,29 @@ class PlayViewController: UIViewController {
         }
     }
     
+    func rePlayFunc() {
+        
+        //清除勝負計數器
+        gameWinCount = 0
+        gameLostCount = 0
+        
+        //更新畫面
+        uppdateUI()
+        
+        //顯示猜拳 剪刀 石頭 布 的按鈕
+        userSingRockButton.isHidden = false
+        userSingPaperButton.isHidden = false
+        userSingScissorsButton.isHidden = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //遊戲開始先更新畫面
         uppdateUI()
+        
+        
+        print("按到我啦")
         
     }
     
@@ -116,28 +134,17 @@ class PlayViewController: UIViewController {
     
     //將GameCount資料傳至下一頁
     @IBSegueAction func dataTansferFunction(_ coder: NSCoder) -> GameListViewController? {
+        
         let controller = GameListViewController(coder: coder)
         controller?.gameCount = GameCount(gameWinCount: gameWinCount, gameLostCount: gameLostCount)
+        controller?.playViewController = self
         
         return controller
-        
     }
-    
     //重玩按鈕
     @IBAction func replayButtonAction(_ sender: Any) {
         
-        //清除勝負計數器
-        gameWinCount = 0
-        gameLostCount = 0
-        
-        //更新畫面
-        uppdateUI()
-        
-        //顯示猜拳 剪刀 石頭 布 的按鈕
-        userSingRockButton.isHidden = false
-        userSingPaperButton.isHidden = false
-        userSingScissorsButton.isHidden = false
-        
+        rePlayFunc()
     }
     
 }

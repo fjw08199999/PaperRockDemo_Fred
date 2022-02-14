@@ -7,16 +7,14 @@
 
 import UIKit
 
-protocol ResultViewControllerProtocol {
-    func dialogDismissed()
-}
 
 
 class GameListViewController: UIViewController {
     
     //接前一頁傳來的資料 型別為GameCount
     var gameCount: GameCount!
-    var delegate: ResultViewControllerProtocol?
+    //回傳資料與前一個頁面連結
+    var playViewController: PlayViewController?
     
     
     //判斷傳過來的值gameWinCount & gameLostCount 是否等於2 如果等於2 代表三戰兩勝的結果出來了 則顯示相對應得文字
@@ -43,7 +41,7 @@ class GameListViewController: UIViewController {
     @IBOutlet weak var showGameStateLabel: UILabel!
     @IBOutlet weak var replayButtonOutlet: UIButton!
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -52,7 +50,7 @@ class GameListViewController: UIViewController {
         //設定按鈕文字
         replayButtonOutlet.setTitle(SystemMsg.replay.rawValue, for: .normal)
         //隱藏按鈕
-        replayButtonOutlet.isHidden = false
+//        replayButtonOutlet.isHidden = false
     }
     
 
@@ -68,8 +66,13 @@ class GameListViewController: UIViewController {
     
     //GameListViewController的按鈕 功能未實做
     @IBAction func replayButtonAction(_ sender: Any) {
+        
+        replayButtonOutlet.isHidden = false
+        playViewController?.rePlayFunc()
         dismiss(animated: true, completion: nil)
-        delegate?.dialogDismissed()
+        
+        
+        
     }
     
 }

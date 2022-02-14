@@ -68,8 +68,8 @@
 				CE0EC3922712D6D4008CBEAF /* GameListViewController.swift */,
 				CE0EC3902712B6C3008CBEAF /* Sing.swift */,
 				CE0EC38E2712B6B8008CBEAF /* GameStatus.swift */,
-				CE0EC37A2712B55B008CBEAF /* Main.storyboard */,
 				CE0EC37D2712B55C008CBEAF /* Assets.xcassets */,
+				CE0EC37A2712B55B008CBEAF /* Main.storyboard */,
 				CE0EC37F2712B55C008CBEAF /* LaunchScreen.storyboard */,
 				CE0EC3822712B55C008CBEAF /* Info.plist */,
 			);
